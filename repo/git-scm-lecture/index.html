@@ -1,0 +1,340 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Git como gestor de trabajo colaborativo</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<section>
+					<h3>Git como gestor de trabajo colaborativo</h3>
+					<div>
+						<p><b>GitHub:</b> @juan-castano :: Software engineer</p>
+					</div>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Agenda</h2>
+					<ul>
+						<li>¿Qué son los gestores de versiones?</li>
+						<li>¿Qué es git-scm?</li>
+						<li>¿Cómo gestiono un repositorio?</li>
+						<li>Liberación de código a producción</li>
+						<li>Consideraciones</li>
+						<li>Workshop</li>
+					</ul>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>¿Qué son los gestores de versiones?</h3>
+					<h5>VCS & SCM</h5>
+				</section>
+				<section>
+					<h4>Tipos de controles de versiones</h4>
+					<img src="images/vcs.png" alt="VCS" width="640" height="480">
+				</section>
+				<section>
+					<h4>Objetos en un repositorio (1)</h4>
+					<div>
+						<ul>
+							<li>Repositorio</li>
+							<li>Módulo</li>
+							<li>Revisión (versión)</li>
+							<li>Etiquetado (tagging)</li>
+							<li>Línea base (baseline)</li>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<h4>Objetos en un repositorio (2)</h4>
+					<div>
+						<ul>
+							<li>Ramas</li>
+							<li>Publicación</li>
+							<li>Conflicto</li>
+							<li>Cambio - Lista de cambios</li>
+							<li>Integración ó mezcla (merge)</li>
+							<li>Actualización (pull o fetch)</li>
+							<li>Copia de trabajo (workspace or sandbox)</li>
+						</ul>
+					</div>
+				</section>
+			</section>
+			<section data-background="#dddddd">
+				<section>
+					<h3>¿Qué es git-scm?</h3>
+					<p>Descentralización y agilidad como principales características</p>
+					<p>¿De dónde nace git-scm?</p>
+				</section>
+				<section>
+					<p>¿Qué podemos rastrear con git-scm? ¿Y qué pasa con los demás archivos?</p>
+					<p>¿Y qué son esas secuencias de números y letras?</p>
+				</section>
+				<section>
+					<h3>Recursos (1)</h3>
+					<a href="https://github.com/progit/progit2/releases/download/2.1.80/progit.pdf" target="_blank">
+						<img src="images/progit2.png" alt="Pro Git" width="200" height="300">
+					</a>
+					<a href="https://git-scm.com/" target="_blank">
+						<img src="images/git-logo.png" alt="git-scm" width="200" height="300">
+					</a>
+				</section>
+				<section>
+					<h3>Recursos (2)</h3>
+					<a href="https://github.com/" target="_blank">
+						<img src="images/GitHub.jpg" alt="GitHub" width="400" height="200">
+					</a>
+					<a href="https://services.github.com/on-demand/downloads/github-git-cheat-sheet.pdf" target="_blank">
+						<img src="images/training.jpg" alt="GitHub cheatsheet" width="200" height="300">
+					</a>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>Herramientas visuales</h3>
+					<img src="images/sourcetree.jpg" alt="Sourcetree">
+					<img src="images/git-cola.png" alt="git-cola">
+
+					<a href="https://git-scm.com/downloads/guis/" target="_blank">Otros enlaces</a>
+				</section>
+				<section>
+					<h3>Y cómo dejar de lado...</h3>
+					<img src="images/console.png" alt="Sourcetree">
+					<h6>Recomendado
+						<a href="http://cmder.net/" target="_blank">cmder</a>
+					</h6>
+				</section>
+			</section>
+			<section data-background="#dddddd">
+				<section>
+					<h3>¿Cómo gestiono un repositorio?</h3>
+					<h4>Configuración inicial</h4>
+				</section>
+				<section>
+					<h4>Definición del repositorio</h4>
+					<pre><code>$ cd my_project</code></pre>
+					<pre><code>$ git init</code></pre>
+				</section>
+				<section>
+					<h4>Configuración de datos básicos</h4>
+					<pre><code>$ git config --global user.name "Juan Castaño"</code></pre>
+					<pre><code>$ git config --global user.email "juan@mail.com"</code></pre>
+				</section>
+				<section>
+					<h4>Agregar dirección del repositorio</h4>
+					<pre><code>$ git remote add origin [URL_HTTP]</code></pre>
+					<pre><code>$ git remote -v</code></pre>
+				</section>
+				<section>
+					<h4>Exclusión de ficheros</h4>
+					<p>Se debe modificar el fichero <b>.gitignore</b></p>
+					<p>Todo repositorio rastreado por Git tiene su base de datos en la carpeta <b>.git</b> es una carpeta oculta</p>
+				</section>
+			</section>
+			<section data-background="#dddddd">
+				<section>
+					<h3>¿Cómo gestiono un repositorio?</h3>
+					<h4>Registro de cambios</h4>
+				</section>
+				<section>
+					<h4>Archivos en el escenario (stage)</h4>
+					<p>Archivos modificados y que sus cambios fueron aceptados por el desarrollador</p>
+					<p>¿Cómo los agrego al stage?</p>
+					<pre><code>$ git add [ nombre_fichero | . ]</code></pre>
+				</section>
+				<section>
+					<h4>Archivos fuera del escenario (unstage)</h4>
+					<p>Archivos a la espera de aceptación por parte de su creador</p>
+					<p><b>NO debe confundirse con los archivos excluidos</b></p>
+				</section>
+				<section>
+					<h4>Restaurar los cambios de un archivo que está en el stage</h4>
+					<p>A veces necesitamos deshacer los cambios aceptados para un archivo</p>
+					<p>NO confundir con reset o revert</p>
+					<pre><code>$ git reset HEAD [ nombre_fichero | . ]</code></pre>
+				</section>
+				<section>
+					<h4>Restaurar los cambios de un archivo que está fuera del stage</h4>
+					<p>A veces necesitamos deshacer los cambios de un archivo o del proyecto porque desconocemos sus cambios</p>
+					<p>NO confundir con reset o revert</p>
+					<pre><code>$ git checkout [ nombre_fichero | . ]</code></pre>
+				</section>
+			</section>
+			<section data-background="#dddddd">
+				<section>
+					<h3>¿Cómo gestiono un repositorio?</h3>
+					<h4>Descargando cambios</h4>
+				</section>
+				<section>
+					<h4>Clonando el repositorio</h4>
+					<p>Cuando existe un proyecto en un servidor</p>
+					<pre><code>$ git clone [URL]</code></pre>
+				</section>
+				<section>
+					<h4>Descargando cambios</h4>
+					<p>Cambios de otros desarrolladores y mezclando</p>
+					<pre><code>$ git pull origin [nombre_rama]</code></pre>
+				</section>
+				<section>
+					<h4>Descargando cambios</h4>
+					<p>Objetos del repositorio remoto</p>
+					<pre><code>$ git fetch origin</code></pre>
+				</section>
+			</section>
+			<section data-background="#dddddd">
+				<section>
+					<h3>¿Cómo gestiono un repositorio?</h3>
+					<h4>Separando el trabajo</h4>
+				</section>
+				<section>
+					<h4>Creación de ramas</h4>
+					<p>Al comenzar un nuevo desarrollo</p>
+					<pre><code>$ git branch [nombre_rama]</code></pre>
+					<pre><code>$ git checkout -b [nombre_rama]</code></pre>
+				</section>
+				<section>
+					<h4>Creación de ramas desde commit anterior</h4>
+					<p>Realizar una nueva rama</p>
+					<pre><code>$ git branch [nombre_rama] [id_commit]</code></pre>
+				</section>
+				<section>
+					<h4>Navegando entre ramas</h4>
+					<p>Los cambios que no han sido aceptados se mueven con el usuario a la rama hasta que sean aceptados en un commit</p>
+					<pre><code>$ git checkout [nombre_rama_alterna]</code></pre>
+				</section>
+				<section>
+					<h4>Eliminación de ramas</h4>
+					<p>No se puede eliminar la rama en la que se encuentra actualmente. Es necesario moverse a otra</p>
+					<pre><code>$ git branch -D [nombre_rama_eliminar]</code></pre>
+				</section>
+			</section>
+			<section data-background="#dddddd">
+				<section>
+					<h3>¿Cómo gestiono un repositorio?</h3>
+					<h4>Uniendo el trabajo</h4>
+				</section>
+				<section>
+					<h4>Uniendo ramas</h4>
+					<p>Que mi código se agregue al igual que el de los demás</p>
+					<pre><code>$ git checkout [nombre_rama_donde_quiero_merge]</code></pre>
+					<pre><code>$ git merge [nombre_rama_donde_traera_cambios]</code></pre>
+				</section>
+				<section>
+					<h4>Resolviendo conflictos</h4>
+					<p>Tener cuidado al revisar los cambios a mezclar</p>
+					<img src="images/conflict-merge.png" width="800" height="500">
+				</section>
+			</section>
+			<section data-background="#dddddd">
+				<section>
+					<h3>¿Cómo gestiono un repositorio?</h3>
+					<h4>Etiquetando el trabajo</h4>
+				</section>
+				<section>
+					<h4>Agregar etiquetas como identificadores</h4>
+					<p>Las etiquetas me permiten versionar e identificar fácilmente las liberaciones o correcciones de bugs
+					</p>
+					<pre><code>$ git tag -a "release-2.3.1" -m "Un mensaje cualquier"</code></pre>
+					<pre><code>$ git tag -l</code></pre>
+				</section>
+				<section>
+					<h4>Me permite definir líneas base de código</h4>
+					<img src="images/git-tagpng.png" width="800" height="500">
+				</section>
+			</section>
+			<section data-background="#dddddd">
+				<section>
+					<h3>¿Cómo gestiono un repositorio?</h3>
+					<h4>Revisando el histórico de cambios</h4>
+					<pre><code>$ git log .</code></pre>
+					<pre><code>$ git log --oneline</code></pre>
+				</section>
+				<section>
+					<h3>¿Y las diferencias?</h3>
+					<pre><code>$ git diff .</code></pre>
+					<pre><code>$ git diff [branch_1] [branch_2]</code></pre>
+					<pre><code>$ git diff [commit_1] [commit_2]</code></pre>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>¿Qué sigue?</h3>
+					<p>
+						Investigar nuevos commandos u opciones de los comandos ya conocidos qué ocurre cuando se ejecuta
+						<pre><code>git commit --amend</code></pre>
+					</p>
+					<p>
+						¿Cómo puedo echarle la culpa a alguien?
+						<pre><code>git blame</code></pre>
+					</p>
+					<p>
+						¿Y si mi palabra es palabra de Dios?
+						<pre><code>git rebase</code></pre>
+					</p>
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>Consideraciones</h3>
+					<ul>
+						<li>La rama principal de todo repositorio es master y no debería ser eliminada</li>
+						<li>Siempre tener una rama base en local</li>
+						<li>Pueden hacerse commits y crear ramas indiscriminadamente sin ejecutar un push al servidor remoto</li>
+						<li>Las ramas en remoto y local pueden ser diferentes</li>
+						<li>No debe llamarse siempre origin, esto se hace por convención</li>
+					</ul>
+				</section>
+				<section>
+					<h4>Diferentes repositorios locales de usuarios</h4>
+					<img src="images/branch-structure.png" alt="Branch structure" height="500">
+				</section>
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+	<!--<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/markdown/marked.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>-->
+	<script>hljs.initHighlightingOnLoad();</script>
+</body>
+
+</html>
